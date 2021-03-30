@@ -10,24 +10,28 @@ from config import config_passive as config
 app = Flask(__name__)
 
 # key_note:"G"=55,"Ab"=56,"A"=57,"Bb"=58,"B"=59,"C"=60,"C#"=61,"D"=62,"D#"=63,"E"=64,"F"=65,"F#"=66
-def pitchToKey(v,key):
-    print((v - key + 12)%36)
+def pitchToKey(pitch,key):
+    #print((v - key + 12)%36)
     note_tem = ''
+    keys = ''
+
+    for v in pitch:
+        try:
+            note_tem = config['note'][(int(v) - key + 12)%36]
+        except:
+            note_tem = config['note'][(int(v) - key + 12 + 1)%36]
+        keys += config['key'][note_tem] + '+'
     
-    try:
-        note_tem = config['note'][(v - key + 12)%36]
-    except:
-        note_tem = config['note'][(v - key + 12 + 1)%36]
-    
-    return config['key'][note_tem]
+    return keys[:-1]
 
 @app.route('/playnote', methods=['POST'])
 def playnote():
     #print(request.form)
-    pitch = request.form['pitch']
 
-    key = pitchToKey(int(pitch), int(request.form['key']))
-    keyboard.press_and_release(key)
+    pitch = request.form['pitch']
+    keys = pitchToKey(pitch, int(request.form['key']))
+    keyboard.press_and_release(keys)
+    print(keys)
 
     return 'Success'
 

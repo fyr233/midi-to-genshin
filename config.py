@@ -10,8 +10,8 @@ config_active = {
         'restart': 'f12'
     },
     'midifile': [
-        'midi/Animenz- 原神組曲 (B站直播).mid',
         'midi/苏维埃进行曲钢琴.mid',
+        'midi/Animenz- 原神組曲 (B站直播).mid',
         'midi/ilem,洛天依,言和-达拉崩吧.mid',
         'midi/病名为爱.mid',
         'midi/九九八十一.mid',

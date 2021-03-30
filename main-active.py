@@ -23,6 +23,7 @@ def loadMidiFile():
     key_signature = config['key_note']['G']
     tempo = 500000
     globaltime = 0.0
+    Track_tmp = []
 
     for filename in config['midifile']:
         
@@ -41,13 +42,22 @@ def loadMidiFile():
                 elif msg.type == 'set_tempo':
                     tempo = msg.tempo
                 elif msg.type == 'note_on':
-                    Track.append(Note(globaltime, msg.note, msg.velocity, key_signature))
+                    Track_tmp.append(Note(globaltime, msg.note, msg.velocity, key_signature))
             
             globaltime = starttime
         
         globaltime += mid.length
     
-    Track.sort(key= lambda item: item.time)
+    Track_tmp.sort(key= lambda item: item.time)
+    Track.append(Track_tmp[0])
+    Track[0].pitch = [Track_tmp[0].pitch]
+
+    for i in range(1, len(Track_tmp)):
+        if Track_tmp[i].time - Track[-1].time < 1e-3:
+            Track[-1].pitch.append(Track_tmp[i].pitch)
+        else:
+            Track.append(Track_tmp[i])
+            Track[-1].pitch = [Track_tmp[i].pitch]
 
 def play(index):
     if index+1 >= len(Track):
