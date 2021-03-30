@@ -10,7 +10,16 @@ config_active = {
         'restart': 'f12'
     },
     'midifile': [
-        '苏维埃进行曲钢琴.mid'
+        'midi/Animenz- 原神組曲 (B站直播).mid',
+        'midi/苏维埃进行曲钢琴.mid',
+        'midi/ilem,洛天依,言和-达拉崩吧.mid',
+        'midi/病名为爱.mid',
+        'midi/九九八十一.mid',
+        'midi/夜的第七章.mid',
+        'midi/一剪梅.mid',
+        'midi/東方紅魔郷U.N.オーエンは彼女なのか？.mid',
+        'midi/东方萃梦想.mid',
+        'midi/极乐净土.mid'
     ],
     'velocity_threshold': {
         '1': [],
@@ -20,7 +29,7 @@ config_active = {
     },
     'passive_server': [
         {
-            'ip': '127.0.0.1',
+            'ip': '192.168.1.107',
             'port': '4000',
             'delay': 10# 延迟，ms
         }
@@ -36,9 +45,11 @@ config_active = {
         "C#": 61,
         "D": 62,
         "D#": 63,
+        "Eb": 63,
         "E": 64,
         "F": 65,
-        "F#": 66
+        "F#": 66,
+        "Gb": 66,
     }
 }
 

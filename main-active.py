@@ -45,12 +45,14 @@ def loadMidiFile():
             
             globaltime = starttime
         
-        globaltime += 3.0
+        globaltime += mid.length
     
     Track.sort(key= lambda item: item.time)
 
 def play(index):
-    print(index)
+    if index+1 >= len(Track):
+        index = 0
+    print(index, end='\r')
     url = 'http://' + config['passive_server'][0]['ip'] + ':' + config['passive_server'][0]['port'] + '/playnote'
     r = requests.post(
         url,
