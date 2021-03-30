@@ -18,18 +18,21 @@ def pitchToKey(pitch,key):
     for v in pitch:
         try:
             note_tem = config['note'][(int(v) - key + 12)%36]
+            keys += config['key'][note_tem] + '+'
         except:
             note_tem = config['note'][(int(v) - key + 12 + 1)%36]
-        keys += config['key'][note_tem] + '+'
+            #keys += config['key'][note_tem] + '+'
+            keys += config['key']['none'] + '+'
     
     return keys[:-1]
 
 @app.route('/playnote', methods=['POST'])
 def playnote():
-    #print(request.form)
+    #print(request.data)
 
-    pitch = request.form['pitch']
-    keys = pitchToKey(pitch, int(request.form['key']))
+    data = json.loads(json.loads(request.data))
+
+    keys = pitchToKey(data['pitch'], data['key'])
     keyboard.press_and_release(keys)
     print(keys)
 

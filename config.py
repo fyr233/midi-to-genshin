@@ -10,16 +10,11 @@ config_active = {
         'restart': 'f12'
     },
     'midifile': [
-        'midi/苏维埃进行曲钢琴.mid',
+        'midi/1.mid',
+        'midi/义勇军进行曲.mid',
         'midi/Animenz- 原神組曲 (B站直播).mid',
         'midi/ilem,洛天依,言和-达拉崩吧.mid',
-        'midi/病名为爱.mid',
-        'midi/九九八十一.mid',
-        'midi/夜的第七章.mid',
-        'midi/一剪梅.mid',
-        'midi/東方紅魔郷U.N.オーエンは彼女なのか？.mid',
-        'midi/东方萃梦想.mid',
-        'midi/极乐净土.mid'
+        
     ],
     'velocity_threshold': {
         '1': [],
